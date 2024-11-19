@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Назначить показ</title>
+    <style>
+        /* Стили для кнопки */
+        .custom-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .custom-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Стили для кнопок в модальном окне */
+        .modal-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .modal-button.confirm {
+            background-color: #e2a700;
+            color: white;
+        }
+        .modal-button.cancel {
+            background-color: #ccc;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <button class="custom-button" onclick="openModal()">Назначить показ</button>
+
+    <!-- Модальное окно -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Назначить показ</h2>
+            <form id="showForm">
+                <label for="object">Объект:</label>
+                <select id="object" name="object">
+                    <option value="object1">Объект 1</option>
+                    <option value="object2">Объект 2</option>
+                    <option value="object3">Объект 3</option>
+                </select><br><br>
+
+                <label for="date">Дата показа:</label>
+                <input type="date" id="date" name="date"><br><br>
+
+                <label for="time">Время показа:</label>
+                <input type="time" id="time" name="time"><br><br>
+
+                <label for="online">Онлайн показ:</label>
+                <input type="checkbox" id="online" name="online"><br><br>
+
+                <button type="button" class="modal-button confirm" onclick="submitForm()">Добавить показ</button>
+                <button type="button" class="modal-button cancel" onclick="closeModal()">Отменить</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Функция для открытия модального окна
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
+        }
+
+        // Функция для закрытия модального окна
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // Функция для обработки отправки формы
+        function submitForm() {
+            // Здесь можно добавить логику для обработки данных формы
+            // Например, отправка данных на сервер или изменение данных в amoCRM
+            alert('Показ назначен!');
+            closeModal();
+        }
+    </script>
+</body>
+</html>
